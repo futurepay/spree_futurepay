@@ -1,0 +1,59 @@
+<div id="futurepay-form"></div>
+<input type="button" class="button primary" value="Pay with FuturePay" id="place_order">
+<script>
+   
+    var count = 0;
+    function loadFP() {
+       $('.form-buttons').hide();
+        if((typeof FP != 'undefined') &&($.isFunction(FP.CartIntegration)) && ($.isFunction(FP.CartIntegration.getFormContent)) && ($.isFunction(FP.CartIntegration.displayFuturePay)) && ($.isFunction(FP.CartIntegration.placeOrder))) {
+            $('#futurepay-form').html(FP.CartIntegration.getFormContent());
+            //Display FuturePay modal
+            FP.CartIntegration();
+            $("#place_order").bind('click', function() {
+                FP.CartIntegration.placeOrder();
+            });
+        }else if (count < 200) {
+            count++;
+            setTimeout( loadFP, 10);
+        }else{
+            document.getElementById("futurepay-form").innerHTML = "Unable to contact the FuturePay servers.  Please contact FuturePay for more information.";
+        }
+    }
+    /*
+     * Loads javascript/styles and response handler
+     */
+    function loadScript(source) {
+        var script = document.createElement('script');
+        script.src = source;
+        script.type = 'text/javascript';
+        script.onload = loadFP();
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(script);
+        var func   = document.createElement("script");
+        func.type  = "text/javascript";
+        func.text  = "function FuturePayResponseHandler(response) {var myTextField = $('input:hidden[name=" + '"trnOrderNumber"' + "]').val();response.originalId = myTextField;var stringify = JSON.stringify(response);var urlenc = encodeURIComponent(stringify);document.location.href = '<%= pay_method.confirm_url %>' + '?info=' + urlenc;}"
+        document.body.appendChild(func);
+    }
+    /*
+     * AJAX pre-order
+     */
+    $.ajax({
+        url: "<%= pay_method.preOrderUrl %>",
+        async:false,
+        type: "GET",
+        type: "POST",
+        dataType : "html",
+        success : function(response) {
+            var n=response.search("FPTK");
+            //Handle success/failed
+            if(n != -1) {
+                loadScript(response);
+            } else {
+                document.getElementById("futurepay-form").innerHTML = response;
+                $("#place_order").hide();
+            }
+        }
+    });
+    
+    
+</script>

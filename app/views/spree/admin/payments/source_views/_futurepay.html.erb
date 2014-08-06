@@ -1,0 +1,8 @@
+
+<fieldset data-hook="futurepay">
+  <div>
+    <% if payment.amount > 0 && payment.state == "completed" %>
+      <%= button_link_to Spree.t('actions.refund', :scope => :futurepay), spree.futurepay_refund_admin_order_payment_path(@order, payment), :icon => 'icon-dollar' %>
+    <% end %>
+  </div>
+</fieldset>

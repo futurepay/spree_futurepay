@@ -1,0 +1,14 @@
+<table class='index' id='listing_log_entries'>
+  <% @log_entries.each do |entry| %>
+      <tbody>
+        <tr><td>Message</td>
+          <td><%= entry.parsed_details.message %></td></tr>
+          <tr><td>Amount</td>
+          <td><%= entry.parsed_details.params['amount'] %></td></tr>
+          <tr><td>Transaction Id</td>
+          <td><%= entry.parsed_details.params['transaction_id'] %></td></tr>
+          <tr><td>Result</td>
+          <td><%= entry.parsed_details.params['result'] %></td></tr>
+      </tbody>
+  <% end %>
+</table>

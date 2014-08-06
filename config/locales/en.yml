@@ -1,0 +1,13 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  spree:
+    contact_email: "Contact Email"
+    main_phone: "Company Phone"
+    name: "Company name"
+    website: "Company website"
+    country_code: "Country Code"
+    region_code: "Region Code"
+    address: "Address"

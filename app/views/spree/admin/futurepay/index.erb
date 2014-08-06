@@ -1,0 +1,147 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= "FuturePay Integration" %>
+<% end %>
+
+<%= javascript_include_tag "futurepay.js" %>
+<% opts ||= Spree::Address.new(country: Spree::Country.new) %>
+<% s_or_b = "s" %>
+
+<div id="futurepay-intro" class="field">
+  
+  With FuturePay, shoppers don't need a credit card to buy from your online store.  They simply put their purchases on a FuturePay tab, making it easy to buy now and pay later. 
+  Offering another payment method, like FuturePay, attracts new customers and leads to more sales.<br /><br /><br />
+  
+  If you already have a FuturePay merchant account, click the button below and enter your FuturePay login credentials when prompted.  Then, FuturePay will be an available payment option for shoppers in your store<br /><br />
+  
+  <div class="align-center">
+    <input type="button" id="activate-fp" value="Activate FuturePay"><br /><br />
+  </div>
+  
+  If you don't have a FuturePay merchant account, add FuturePay to your cart in minutes.<br /><br />
+  
+  <div class="align-center">
+    <input type="button" id="create-fp" value="Get Started Now">
+  </div>
+  
+</div>
+
+   <div class="row">
+        <div id="futurepay-new" class="alpha six columns">
+          <fieldset class="create no-border-bottom">
+            <legend align="center"><%= Spree.t(:get_started_now)%></legend>
+              <%= form_tag admin_futurepay_create_path, :method => :put do |f| %>
+            
+
+            
+                <div class="field">
+                  <%= label_tag :contact_email, Spree.t(:contact_email) %> <br />
+                  <%= text_field_tag :contact_email, "", :required => true ,:maxlength => 45, :class => 'fullwidth' %><br>
+                  <span class="info">
+                    <%= Spree.t(:account_email_address) %>
+                  </span>
+                </div>              
+            
+                <div class="field">
+                  <%= label_tag :first_name, Spree.t(:first_name) %> <br />
+                  <%= text_field_tag :first_name, "", :required => true ,:maxlength => 45, :class => 'halfwidth' %><br>
+                </div>
+            
+                <div class="field">
+                  <%= label_tag :last_name, Spree.t(:last_name) %> <br />
+                  <%= text_field_tag :last_name, "", :required => true ,:maxlength => 45, :class => 'halfwidth' %><br>
+                </div>
+            
+                <div class="field">
+                  <%= label_tag :main_phone, Spree.t(:main_phone) %> <br />
+                  <%= text_field_tag :main_phone, "", :required => true ,:maxlength => 45, :class => 'halfwidth' %><br>
+                  <span class="info">
+                    <%= Spree.t(:primary_business_contact) %>
+                  </span>
+                </div>  
+
+                <div class="field">
+                  <%= label_tag :name, Spree.t(:name) %> <br />
+                  <%= text_field_tag :name, "", :required => true ,:maxlength => 45, :class => 'fullwidth' %><br>
+                </div>  
+
+                <div class="field">
+                  <%= label_tag :website, Spree.t(:website) %> <br />
+                  <%= text_field_tag :website, "", :required => true ,:maxlength => 45, :class => 'fullwidth' %><br>
+                </div>            
+                <div class="field">
+                  <%= label_tag :state, Spree.t(:country) %> <br />
+                  <span id="<%= s_or_b %>country">
+                    <%= collection_select(:selected_country,:id, available_countries, :id , :name, {}, {:class => 'select2 fullwidth',:required => true}) %>
+                  </span>
+                </div>
+                <div class="field">
+                  <%= label_tag :state, Spree.t(:state) %> <br />
+                  <span id="<%= s_or_b %>state">
+                    <%= text_field :selected_state_name,:id,:style => "display: #{opts.country.states.empty? ? 'block' : 'none' };",:maxlength => 45,:disabled => opts.country.states.empty?,:required => true, :class => 'fullwidth state_name' %>
+                    <%= collection_select(:selected_state_code,:id, opts.country.states.sort, :id, :name, {:include_blank => true}, {:class => 'select2 fullwidth', :required => true,:style => "display: #{opts.country.states.empty? ? 'none' : 'block' };", :disabled => opts.country.states.empty?}) %>
+                  </span>
+                </div>
+                <div class="field">
+                  <%= label_tag :address, Spree.t(:address) %> <br />
+                  <%= text_field_tag :address, "", :required => true ,:maxlength => 45, :class => 'fullwidth' %><br>
+                </div>  
+
+                <div class="field">
+                  <%= label_tag :city, Spree.t(:city) %> <br />
+                  <%= text_field_tag :city, "", :required => true ,:maxlength => 45, :class => 'halfwidth' %><br>
+                </div>  
+
+                <div class="field">
+                  <%= label_tag :zip, Spree.t(:zip) %> <br />
+                  <%= text_field_tag :zip, "", :required => true ,:maxlength => 45, :class => 'halfwidth' %><br>
+                </div>  
+
+                  <%= text_field_tag :type,"signup", :required => true ,:maxlength => 45, :class => 'hidden' %>
+                  <%= button Spree.t('actions.create_account_and_activate'), 'refresh' %>  <a id="create-fp-close">CANCEL</a>
+              
+              <% end %>
+          </fieldset>
+        </div>
+        <div id="futurepay-existing" class="alpha six columns">
+          <fieldset class="create no-border-bottom">
+            <legend align="center"><%= Spree.t(:activate_futurepay)%></legend>
+              <%= form_tag admin_futurepay_create_path, :method => :put do |f| %>
+
+                <div class="field">
+                  <%= label_tag :user_name, Spree.t(:user_name) %> <br />
+                  <%= text_field_tag :user_name, "", :required => true ,:maxlength => 45, :class => 'fullwidth' %><br>
+                  <span class="info">
+                    <%= Spree.t(:account_email_address) %>
+                  </span>
+                </div>                          
+                <div class="field">
+                  <%= label_tag :password, Spree.t(:password) %> <br />
+                  <%= password_field_tag :password, "", :required => true ,:maxlength => 45, :class => 'fullwidth' %><br>
+                  <span class="info">
+                    <%= Spree.t(:account_password) %>
+                  </span>
+                </div>  
+
+                  <%= text_field_tag :type,"retrieve", :required => true ,:maxlength => 45, :class => 'hidden' %>
+                  <%= button Spree.t('actions.activate_futurepay'), 'refresh' %>  <a id="activate-fp-close">CANCEL</a>
+            
+              <% end %>
+          </fieldset>
+        </div>
+   </div>
+
+  
+  
+<% content_for :head do %>
+  <%= javascript_tag do -%>
+    $(document).ready(function(){
+      $('span#<%= s_or_b %>country .select2').on('change', function() { update_state('<%= s_or_b %>'); });
+    });
+  <% end -%>
+<% end %>
+  
+
+
+

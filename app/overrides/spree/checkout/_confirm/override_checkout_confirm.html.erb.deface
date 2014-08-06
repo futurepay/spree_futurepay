@@ -1,0 +1,6 @@
+<!-- insert_before 'div.form-buttons' -->
+<% pay_method_id = Spree::Payment.find(@order.payment_ids.last) %>
+<% pay_method = Spree::PaymentMethod.find(pay_method_id.payment_method_id) %>
+<% if pay_method.instance_of? Spree::PaymentMethod::Futurepay %>
+<%= render :partial => 'spree/shared/futurepay', :locals => { :pay_method => pay_method, :order => @order } %>
+<% end %>
