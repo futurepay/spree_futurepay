@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'
 
-  # s.author    = 'James Teague'
-  # s.email     = 'jteague@futurepay.com'
-  # s.homepage  = 'https://www.futurepay.com'
+  s.author    = 'James Teague'
+  s.email     = 'jteague@futurepay.com'
+  s.homepage  = 'https://www.futurepay.com'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
