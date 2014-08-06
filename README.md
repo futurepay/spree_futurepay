@@ -9,7 +9,7 @@ Installation
 Add spree_futurepay to your Gemfile:
 
 ```ruby
-gem 'spree_futurepay' , :github => "jeteague/spree_futurepay", :branch => "2-2-stable"
+gem 'spree_futurepay' , :github => "jeteague/spree_futurepay", :branch => "2-3-stable"
 ```
 
 Install the gem using Bundler:
