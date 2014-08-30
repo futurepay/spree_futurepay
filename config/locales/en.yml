@@ -2,12 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
   spree:
-    contact_email: "Contact Email"
-    main_phone: "Company Phone"
-    name: "Company name"
-    website: "Company website"
-    country_code: "Country Code"
-    region_code: "Region Code"
-    address: "Address"
+    future_pay:
+      payment:
+        title: 'Buy Now and Pay Later with FuturePay'
+        description: 'Buy Now and Pay Later without a credit card using FuturePay. It is secure, convenient and easy to use. Signup and checkout in seconds.'
+        nocc: 'No credit card required.'
+        lock: 'Safe and Secure. Your information is always protected by the latest fraud prevention and security tools.'
+        nop: 'No high finance charges. Say goodbye to high APR interest and financing charges.'
