@@ -4,9 +4,11 @@
 en:
   spree:
     future_pay:
+      error: 'Unable to contact the FuturePay servers. Please contact FuturePay for more information.'
       payment:
         title: 'Buy Now and Pay Later with FuturePay'
         description: 'Buy Now and Pay Later without a credit card using FuturePay. It is secure, convenient and easy to use. Signup and checkout in seconds.'
         nocc: 'No credit card required.'
         lock: 'Safe and Secure. Your information is always protected by the latest fraud prevention and security tools.'
         nop: 'No high finance charges. Say goodbye to high APR interest and financing charges.'
+      place_order: 'Pay with FuturePay'

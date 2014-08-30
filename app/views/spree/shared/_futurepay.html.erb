@@ -1,7 +1,7 @@
 <div id="futurepay-form"></div>
-<input type="button" class="button primary" value="Pay with FuturePay" id="place_order">
+<input type="button" class="button primary" value="<%= Spree.t('fugture_pay.place_order') %>" id="place_order">
 <script>
-   
+
     var count = 0;
     function loadFP() {
        $('.form-buttons').hide();
@@ -16,7 +16,7 @@
             count++;
             setTimeout( loadFP, 10);
         }else{
-            document.getElementById("futurepay-form").innerHTML = "Unable to contact the FuturePay servers.  Please contact FuturePay for more information.";
+            document.getElementById("futurepay-form").innerHTML = "<%= Spree.t('future_pay.error') %>";
         }
     }
     /*
@@ -54,6 +54,6 @@
             }
         }
     });
-    
-    
+
+
 </script>
