@@ -1,7 +1,8 @@
 Spree FuturePay
 ==============
 
-The FuturePay for Spree gem allows you to accept online payments via FuturePay. FuturePay is a payment option that lets customers buy now and pay later when shopping online. It is a simple, safe and convenient way for customers to buy online in one-step, without using a credit card.
+The FuturePay for Spree gem allows you to accept online payments via FuturePay. FuturePay is your safe and secure alternative payment option when offering your customers a card free choice. With FuturePay, customers can buy now and pay later with one click, creating a streamlined checkout process on every device. With guaranteed payments and an easy integration, merchants can start attracting new customers instantly. To learn more about how FuturePay can benefit your business, visit https://www.futurepay.com or contact us today.
+Thanks!
 
 Installation
 ------------
